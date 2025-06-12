@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salary Increase Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 400px;
+        margin: auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input,
+      button {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 1rem;
+        font-size: 1rem;
+      }
+      .result {
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+      footer {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>GPS Wala Khel Salary Increase Calculator</h2>
+      <label for="basicPay">Enter Basic Pay:</label>
+      <input type="number" id="basicPay" placeholder="e.g. 50000" />
+      <button onclick="calculateIncrease()">Calculate Increase</button>
+      <div class="result" id="output"></div>
+    </div>
+
+    <footer>
+      AbdulQadir Khan<br />
+      M.Phil <br />
+      Biotechnology GPS Wala Khel Surani
+    </footer>
+
+    <script>
+      function calculateIncrease() {
+        const basicPay = parseFloat(document.getElementById("basicPay").value);
+        if (isNaN(basicPay) || basicPay <= 0) {
+          document.getElementById("output").textContent =
+            "Please enter a valid basic pay.";
+          return;
+        }
+
+        const disparityAllowance = basicPay * 0.3;
+        const adhocRelief = basicPay * 0.1;
+        const totalIncrease = disparityAllowance + adhocRelief;
+
+        document.getElementById("output").innerHTML = `
+        Disparity Allowance (30%): Rs. ${disparityAllowance.toFixed(2)}<br>
+        Adhoc Relief (10%): Rs. ${adhocRelief.toFixed(2)}<br>
+        <strong>Total Increase: Rs. ${totalIncrease.toFixed(2)}</strong>
+      `;
+      }
+    </script>
+  </body>
+</html>
